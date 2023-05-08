@@ -2,7 +2,7 @@ import React from "react";
 import "./style.scss";
 
 function Details() {
-  return <div></div>;
+  return <div>Details</div>;
 }
 
 export default Details;

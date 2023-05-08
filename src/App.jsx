@@ -17,14 +17,21 @@ function App() {
   const url = useSelector((state) => state.home.url);
 
   useEffect(() => {
-    apiTesting();
+    fetchApiConfig();
   }, []);
 
-  const apiTesting = async () => {
-    fetchDataFromApi("/movie/popular")
+  const fetchApiConfig = async () => {
+    fetchDataFromApi("/configuration")
       .then((res) => {
         console.log(res);
-        dispatch(getApiConfiguration(res));
+
+        const url = {
+          backdrop: res.images.secure_base_url + "original",
+          poster: res.images.secure_base_url + "original",
+          profile: res.images.secure_base_url + "original",
+        }
+
+        dispatch(getApiConfiguration(url));
       })
       .catch((err) => {
         console.log("GOT ERROR");
