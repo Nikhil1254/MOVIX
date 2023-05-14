@@ -11,6 +11,7 @@ import Explore from "./pages/explore/Explore";
 import PageNotFound from "./pages/404/PageNotFound";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
+import { getGenres } from "./store/homeSlice";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,17 +19,17 @@ function App() {
 
   useEffect(() => {
     fetchApiConfig();
+    genresCall();
   }, []);
 
   const fetchApiConfig = async () => {
     fetchDataFromApi("/configuration")
       .then((res) => {
-
         const url = {
           backdrop: res.images.secure_base_url + "original",
           poster: res.images.secure_base_url + "original",
           profile: res.images.secure_base_url + "original",
-        }
+        };
 
         dispatch(getApiConfiguration(url));
       })
@@ -36,6 +37,24 @@ function App() {
         console.log("GOT ERROR");
         console.log(err);
       });
+  };
+
+  const genresCall = async () => {
+    let promises = [];
+    let endPoints = ["tv", "movie"];
+    let allGenres = {};
+
+    endPoints.forEach((url) => {
+      promises.push(fetchDataFromApi(`/genre/${url}/list`));
+    });
+
+    const data = await Promise.all(promises);
+
+    data.map(({ genres }) => {
+      return genres.map((item) => (allGenres[item.id] = item));
+    });
+
+    dispatch(getGenres(allGenres));
   };
 
   return (

@@ -21,7 +21,6 @@ const Header = () => {
   useEffect(() => {
     // when url changes again we are scrolling to top
     // cause our page does not refresh, scroll will remain where it is
-    console.log(location.pathname);
     window.scrollTo(0, 0);
   }, [location]);
 
