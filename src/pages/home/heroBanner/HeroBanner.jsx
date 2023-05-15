@@ -24,7 +24,6 @@ function HeroBanner() {
     if (event.key === "Enter" && query.length > 0) {
       navigate(`/search/${query}`);
     }
-    console.log(e.key);
   };
 
   return (

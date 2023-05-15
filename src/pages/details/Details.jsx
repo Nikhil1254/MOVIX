@@ -17,7 +17,6 @@ function Details() {
     `/${mediaType}/${id}/credits`
   );
 
-  console.log("videos -\n", data?.results);
 
   return (
     <div>

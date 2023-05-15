@@ -14,6 +14,7 @@ import PosterFallback from "../../assets/no-poster.png";
 import "./style.scss";
 import CircleRating from "../circleRating/CircleRating";
 import Genres from "../genres/Genres";
+import notFound from "../../assets/not-found.png";
 
 function Carousel({ data, loading, endpoint, title }) {
   const carouselContainer = useRef();
@@ -50,14 +51,26 @@ function Carousel({ data, loading, endpoint, title }) {
     <div className="carousel">
       <ContentWrapper>
         {title && <div className="carouselTitle">{title}</div>}
-        <BsFillArrowLeftCircleFill
-          className="carouselLeftNav arrow"
-          onClick={() => navigation("left")}
-        />
-        <BsFillArrowRightCircleFill
-          className="carouselRightNav arrow"
-          onClick={() => navigation("right")}
-        />
+        {data && data.length > 0 && (
+          <>
+            <BsFillArrowLeftCircleFill
+              className="carouselLeftNav arrow"
+              onClick={() => navigation("left")}
+            />
+            <BsFillArrowRightCircleFill
+              className="carouselRightNav arrow"
+              onClick={() => navigation("right")}
+            />
+          </>
+        )}
+
+        {data && data.length === 0 && (
+          <>
+            <div className="notFound">
+              <img src={notFound} alt="notFound" />
+            </div>
+          </>
+        )}
         {!loading ? (
           <div className="carouselItems" ref={carouselContainer}>
             {data?.map((item) => {

@@ -3,6 +3,19 @@
 .carousel {
     margin-bottom: 50px;
 
+    .notFound {
+        img {
+            width: 100px;
+
+            @include md {
+               width: 130px;
+            }
+        }
+
+
+    }
+
+
     .contentWrapper {
         position: relative;
     }
