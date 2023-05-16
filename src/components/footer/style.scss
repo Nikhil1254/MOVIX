@@ -2,7 +2,7 @@
 
 .footer {
     background-color: var(--black3);
-    padding: 50px 0;
+    padding: 30px 0;
     color: white;
     position: relative;
 
@@ -10,6 +10,10 @@
         display: flex;
         align-items: center;
         flex-direction: column;
+    }
+
+    .menuItem{
+        margin-bottom: 20px;
     }
 
     .menuItems {
@@ -69,6 +73,7 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
+            color: white;
             transition: all ease 0.3s;
 
             &:hover {

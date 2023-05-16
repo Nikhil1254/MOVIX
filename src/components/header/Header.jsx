@@ -35,14 +35,14 @@ const Header = () => {
   const controlNavbar = () => {
     // console.log(window.scrollY); gives scrolled so far
     if (window.scrollY > 200) {
-      if (window.scrollY > lastScrollY && !mobileMenu) {
+      if (window.scrollY > lastScrollY && !mobileMenu ) {
         setShow("hide");
       } else {
-        setShow("show");
+        setShow("show");  // dark background
       }
 
       setLastScrollY(window.scrollY);
-    } else setShow("top");
+    } else setShow("top"); // light blur background
   };
 
   const searchQueryHandler = (event) => {
