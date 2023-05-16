@@ -15,10 +15,10 @@ function SearchResult() {
 
   const fetchInitialData = () => {
     setLoading(true);
-    fetchDataFromApi(`/search/multi?query=${query}&page=${pageNum}`).then(
+    fetchDataFromApi(`/search/multi?query=${query}&page=1`).then(
       (res) => {
         setData(res);
-        setPageNum((prev) => prev + 1);
+        setPageNum(2);
         setLoading(false);
       }
     );
@@ -30,7 +30,7 @@ function SearchResult() {
         if (data?.results) {
           setData({
             ...data,
-            results: [...data?.results, ...res?.results],
+            results: [...data?.results, ...res.results],
           });
         } else {
           setData(res);
@@ -41,6 +41,7 @@ function SearchResult() {
   };
 
   useEffect(() => {
+    setPageNum(1);
     fetchInitialData();
   }, [query]);
 
@@ -61,7 +62,7 @@ function SearchResult() {
                 dataLength={data?.results?.length || []}
                 next={fetchNextPageData}
                 hasMore={pageNum <= data?.total_pages}
-                loader={<Spinner/>}
+                loader={<Spinner />}
               >
                 {data?.results.map((item, idx) => {
                   if (item.media_type === "person") return;

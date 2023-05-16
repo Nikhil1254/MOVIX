@@ -57,6 +57,7 @@ const Header = () => {
   const openSearch = () => {
     setMobileMenu(false);
     setShowSearch(true);
+    console.log(searchBarRef?.current)
   };
 
   const openMobileMenu = () => {
@@ -78,7 +79,7 @@ const Header = () => {
       <ContentWrapper>
         {/* for desktop - start */}
         <div className="logo">
-          <img src={logo} alt="" onClick={()=>navigate("/")} />
+          <img src={logo} alt="" onClick={() => navigate("/")} />
         </div>
         <ul className="menuItems">
           <li className="menuItem" onClick={() => navigationHandler("movie")}>
@@ -114,6 +115,7 @@ const Header = () => {
                 placeholder="Search for a movie or tv show..."
                 onKeyUp={searchQueryHandler}
                 onChange={(e) => setQuery(e.target.value)}
+                ref={searchBarRef}
               />
               <VscChromeClose onClick={() => setShowSearch(false)} />
             </div>
