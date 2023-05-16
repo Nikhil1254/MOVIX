@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import "./style.scss";
+import dataNotFound from '../../../assets/not-found.png'
 
 import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
 import VideoPopup from "../../../components/videoPopup/VideoPopup";
@@ -25,6 +26,13 @@ const VideosSection = ({ data, loading }) => {
     <div className="videosSection">
       <ContentWrapper>
         <div className="sectionHeading">Official Videos</div>
+        {data && data.results.length === 0 && (
+          <>
+            <div className="notFound">
+              <img src={dataNotFound} alt="notFound" />
+            </div>
+          </>
+        )}
         {!loading ? (
           <div className="videos">
             {data.results.map((video) => (
@@ -38,7 +46,7 @@ const VideosSection = ({ data, loading }) => {
               >
                 <div className="videoThumbnail">
                   <Img
-                    src={`https:img.youtube.com/vi/${video.key}/mqdefault.jpg`}
+                    src={`https://img.youtube.com/vi/${video.key}/mqdefault.jpg`}
                   />
                   <PlayIcon />
                 </div>
