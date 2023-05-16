@@ -57,7 +57,6 @@ const Header = () => {
   const openSearch = () => {
     setMobileMenu(false);
     setShowSearch(true);
-    console.log(searchBarRef?.current)
   };
 
   const openMobileMenu = () => {
@@ -115,7 +114,6 @@ const Header = () => {
                 placeholder="Search for a movie or tv show..."
                 onKeyUp={searchQueryHandler}
                 onChange={(e) => setQuery(e.target.value)}
-                ref={searchBarRef}
               />
               <VscChromeClose onClick={() => setShowSearch(false)} />
             </div>
