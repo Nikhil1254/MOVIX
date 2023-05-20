@@ -34,9 +34,7 @@ function HeroBanner() {
         </div>
       )}
 
-      <div className="opacity-layer">
-        
-      </div>
+      <div className="opacity-layer"></div>
 
       <ContentWrapper>
         <div className="wrapper">
@@ -52,7 +50,13 @@ function HeroBanner() {
                 onKeyUp={searchQueryHandler}
                 onChange={(e) => setQuery(e.target.value)}
               />
-              <button onClick={()=>navigate(`/search/${query}`)}>Search</button>
+              <button
+                onClick={() => {
+                  if (query.length > 0) navigate(`/search/${query}`);
+                }}
+              >
+                Search
+              </button>
             </div>
           </div>
         </div>

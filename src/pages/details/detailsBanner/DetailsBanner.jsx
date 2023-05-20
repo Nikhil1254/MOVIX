@@ -15,7 +15,7 @@ import { PlayIcon } from "../PlayButton";
 import VideoPopup from "../../../components/videoPopup/VideoPopup";
 
 const DetailsBanner = ({ video, crew }) => {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false); // to show video popup
   const [videoId, setVideoId] = useState(null);
 
   const { mediaType, id } = useParams();
@@ -76,9 +76,7 @@ const DetailsBanner = ({ video, crew }) => {
                     }}
                   >
                     <PlayIcon />
-                    <span className="text" onClick={() => {}}>
-                      Watch Trailer
-                    </span>
+                    <span className="text">Watch Trailer</span>
                   </div>
                 </div>
                 <div className="overview">
@@ -138,6 +136,7 @@ const DetailsBanner = ({ video, crew }) => {
                   </div>
                 )}
 
+                {/* created by comes in case of tv shows */}
                 {data.created_by?.length > 0 && (
                   <div className="info">
                     <span className="text bold">Creator: </span>
